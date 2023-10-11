@@ -44,6 +44,8 @@ fun infixExample() {
     item1 `💩` item2
 }
 
+// question to audience - where does it actually make sense?
+
 operator fun String.invoke(): BigDecimal {
     return BigDecimal("12.34")
 }

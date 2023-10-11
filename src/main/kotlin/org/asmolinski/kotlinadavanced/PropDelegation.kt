@@ -38,14 +38,14 @@ data class InvocationCounter(
     var setCounter: Int = 0
 )
 
-class CountInvocationDelegate<T>(private var value: T, private val counter: InvocationCounter): ReadWriteProperty<Any?, T> {
+class CountInvocationDelegate<T>(private var value: T, private val counter: InvocationCounter): ReadWriteProperty<Any, T> {
 
-    override fun getValue(thisRef: Any?, property: KProperty<*>): T {
+    override fun getValue(thisRef: Any, property: KProperty<*>): T {
         counter.getCounter++
         return value
     }
 
-    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
+    override fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
         counter.setCounter++
         this.value = value
     }

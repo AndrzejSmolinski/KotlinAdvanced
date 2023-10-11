@@ -23,7 +23,7 @@ private fun numberParseExample() {
 
 inline fun <reified E : Enum<E>> String.asEnum(): E {
     println("Converting $this to ${E::class.simpleName}")
-    return E::class.java.enumConstants.find { it.name == this } as E
+    return java.lang.Enum.valueOf(E::class.java, this)
 }
 
 enum class Enum1 { ON_OFFER, ON_ORDER }

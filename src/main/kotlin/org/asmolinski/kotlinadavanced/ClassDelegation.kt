@@ -9,13 +9,16 @@ open class Dog: Animal {
 }
 
 class PureBreedDogInheritance(val breed: String): Dog()
+class PureBreedDogComposition(val dog: Dog, val breed: String)
 class PureBreedDogDelegate(val breed: String): Animal by Dog()
 
 fun dogsExample() {
     val labrador = PureBreedDogInheritance("labrador retriever")
+    val jamnik = PureBreedDogComposition(Dog(), "jamniczek faficzek")
     val shepherd = PureBreedDogDelegate("owczarek podhalański")
 
     println("${labrador.breed} robi ${labrador.sound()}")
+    println("${jamnik.breed} robi ${jamnik.dog.sound()}")
     println("${shepherd.breed} robi ${shepherd.sound()}")
 }
 
