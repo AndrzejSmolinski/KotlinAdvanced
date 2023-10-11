@@ -1,3 +1,5 @@
+package org.asmolinski.kotlinadavanced
+
 fun regularSum(a: Int, b: Int) = a + b
 
 inline fun inlineSum(a: Int, b: Int) = a + b
