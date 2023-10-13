@@ -2,19 +2,32 @@ package org.asmolinski.kotlinadavanced
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import kotlin.reflect.KClass
 import java.math.BigDecimal
 
+fun <T : Number> javaStyleParse(string: String, targetType: KClass<T>): T {
+    return when (targetType) {
+        BigDecimal::class -> BigDecimal(string) as T
+        Double::class -> string.toDouble() as T
+        else -> throw IllegalArgumentException()
+    }
+}
+
 inline fun <reified T : Number> parse(string: String): T {
-    return if (T::class == BigDecimal::class) {
-        BigDecimal(string) as T
-    } else if (T::class == Double::class) {
-        string.toDouble() as T
-    } else {
-        throw IllegalArgumentException()
+    return when(T::class) {
+        BigDecimal::class -> BigDecimal(string) as T
+        Double::class -> string.toDouble() as T
+        else -> throw IllegalArgumentException()
     }
 }
 
 private fun numberParseExample() {
+    val doubleNoReified: Double = javaStyleParse("1.23", Double::class)
+    val decimalNoReified: BigDecimal = javaStyleParse("1.23", BigDecimal::class)
+    println("Parsed double no reified: $doubleNoReified")
+    println("Parsed decimal no reified: $decimalNoReified")
+
+
     val double: Double = parse("1.23")
     val decimal: BigDecimal = parse("1.23")
     println("Parsed double: $double")
