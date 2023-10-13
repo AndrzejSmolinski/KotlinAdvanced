@@ -37,6 +37,11 @@ fun main() {
 }
 
 // CHEAT SHEET - FUNCTION PARAMETERS IN INLINE FUNS
-// inline (no modifier) = returns in lambdas allowed, no function object is created, cannot be invoked in lambda, cannot be passed to non-inline fun as parameter
-// crossinline = returns in lambdas not allowed, no function object is created, can be invoked in lambda, cannot be passed to non-inline fun as parameter
-// noinline = returns in lambdas not allowed, function object is created, can be invoked in lambda, can be passed to non-inline fun as parameter
+// inline (no modifier) = returns in lambdas allowed, no function object is created, cannot be invoked in lambda by non-inline fun, cannot be passed to non-inline fun as parameter
+// use when you call other inline functions in your inline function, or just call lambda directly
+
+// crossinline = returns in lambdas not allowed, no function object is created, can be invoked in lambda by non-inline fun, cannot be passed to non-inline fun as parameter
+// use when you want to "cross inline boundary" - invoke inlined function in a non-inlined one
+
+// noinline = returns in lambdas not allowed, function object is created, can be invoked in lambda by non-inline fun, can be passed to non-inline fun as parameter
+// use when you have to pass function directly to non-inline function and therefore cannot use inlining
