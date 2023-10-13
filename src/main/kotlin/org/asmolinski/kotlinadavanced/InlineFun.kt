@@ -4,6 +4,7 @@ fun regularSum(a: Int, b: Int) = a + b
 
 inline fun inlineSum(a: Int, b: Int) = a + b
 
+// inlining this is a tradeoff
 fun przyklad1() {
     println("test")
     println("test")
