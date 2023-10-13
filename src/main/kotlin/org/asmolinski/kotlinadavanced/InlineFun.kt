@@ -4,6 +4,22 @@ fun regularSum(a: Int, b: Int) = a + b
 
 inline fun inlineSum(a: Int, b: Int) = a + b
 
+fun przyklad1() {
+    println("test")
+    println("test")
+    println("test")
+    println("test")
+    println("test")
+    println("test")
+    println("test")
+    println("test")
+}
+
+fun przyklad2() {
+    // this is equivalent to just println("test") !
+    run { run { run { run { println("test") } } } }
+}
+
 fun executeLambda(lambda: () -> Unit) {
     println("Odpalamy lambde")
     lambda()
@@ -24,4 +40,5 @@ fun main() {
     // inlining in Kotlin stdlib
     "hello world".let { inlineLambda { println(it) } }
     listOf(1, 2, 3).map { it + 1 }
+    przyklad2()
 }
