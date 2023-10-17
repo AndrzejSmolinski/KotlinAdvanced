@@ -12,6 +12,8 @@ class LazyHolder {
     }
 }
 
+// line 43 in Lazy.kt
+
 private fun lazyPropertyExample() {
     val lazyHolder = LazyHolder()
     println(Instant.now().toString() + " stworzony obiekt")
@@ -56,8 +58,8 @@ class CustomDelegateHolder(initialValue: Int) {
     var value: Int by CountInvocationDelegate(initialValue, counter)
 
     // property delegation
-    val getCount: Int by counter::getCounter
-    val setCount: Int by counter::setCounter
+    val getCount by counter::getCounter
+    val setCount by counter::setCounter
 }
 
 fun customDelegateExample() {
