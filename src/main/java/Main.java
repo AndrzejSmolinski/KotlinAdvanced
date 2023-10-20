@@ -158,12 +158,22 @@ class EnhancedListInJava<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {
         return delegate.subList(fromIndex, toIndex);
     }
+
+    public List<List<T>> splitInHalf() {
+        return List.of(
+                subList(0, size()/2),
+                subList(size()/2, size())
+        );
+    }
 }
 
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        final var myList = new EnhancedListInJava<>(List.of(1,2,3,4,5,6));
+        System.out.println(myList.size());
+        System.out.println(myList.contains(2));
+        System.out.println(myList.splitInHalf());
     }
 }
 
